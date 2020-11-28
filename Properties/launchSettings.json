@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "importer": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DB_USER": "user",
+        "DB_NAME": "postgres",
+        "SRC": "C:\\Projects\\importer\\data\\in",
+        "DB_PASS": "pass",
+        "DB_HOST": "127.0.0.1",
+        "DST": "C:\\Projects\\importer\\data\\out"
+      }
+    }
+  }
+}

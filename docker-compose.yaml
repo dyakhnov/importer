@@ -1,0 +1,33 @@
+version: "3"
+networks:
+  default:
+    driver: bridge
+volumes:
+  db_data: null
+services:
+  db:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    volumes:
+      - "db_data:/var/lib/postgresql/data"
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_INITDB_ARGS=--data-checksums --locale=en_US.utf8
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=postgres
+  app:
+    build: .
+    volumes:
+      - "/c/Projects/importer/data/in:/input"
+      - "/c/Projects/importer/data/out:/output"
+    environment:
+      - DB_HOST=db
+      - DB_USER=user
+      - DB_PASS=pass
+      - DB_NAME=postgres
+      - SRC=/input
+      - DST=/output
+    depends_on:
+      - db
