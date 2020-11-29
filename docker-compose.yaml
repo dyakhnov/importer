@@ -20,8 +20,8 @@ services:
   app:
     build: .
     volumes:
-      - "/c/Projects/importer/data/in:/input"
-      - "/c/Projects/importer/data/out:/output"
+      - "./data/input:/input"
+      - "./data/output:/output"
     environment:
       - DB_HOST=db
       - DB_USER=user

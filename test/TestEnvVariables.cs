@@ -23,7 +23,7 @@ namespace importerTests
             StringWriter sw = new StringWriter();
             Console.SetOut(sw);
 
-            Environment.SetEnvironmentVariable("SRC", "../../../Resources/in");
+            Environment.SetEnvironmentVariable("SRC", "../../../Resources/input");
 
             var app = new importer.Importer();
             app.Run();
