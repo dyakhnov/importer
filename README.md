@@ -1,4 +1,3 @@
-
 ## Few questions to address
 
 1. What database should be used? MS SQL, MySQL, PostgreSQL, etc.
@@ -15,7 +14,14 @@
 4. Database schema is available in [schema.sql](schema.sql) file
 5. Unit tests are coming soon...
 
+## Results
+
+First run will process valid files and moves all files from source to destination folder.
+![](docs/0-first-run.png)
+
+Let's move data files back to source folder and run app again.
+![](docs/1-second-run.png)
+
 ## Docker
 
 Docker image is available at [dyakhnov/importer](https://hub.docker.com/r/dyakhnov/importer)
-
