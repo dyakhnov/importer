@@ -1,7 +1,16 @@
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 
-COPY bin/Release/netcoreapp3.1/publish/ App/
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 
-WORKDIR /App
+WORKDIR /src
+COPY ./src .
+
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app
+
+FROM base AS runtime
+
+WORKDIR /app
+COPY --from=build /app .
 
 ENTRYPOINT ["dotnet", "importer.dll"]

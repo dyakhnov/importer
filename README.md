@@ -14,3 +14,8 @@
 3. Database (Postgres) connection parameters are set with environment variables DB_HOST, DB_USER, DB_PASS and DB_NAME
 4. Database schema is available in [schema.sql](schema.sql) file
 5. Unit tests are coming soon...
+
+## Docker
+
+Docker image is available at [dyakhnov/importer](https://hub.docker.com/r/dyakhnov/importer)
+
