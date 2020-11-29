@@ -8,6 +8,12 @@ COPY ./src .
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app
 
+FROM build AS test
+
+WORKDIR /test
+COPY ./test .
+RUN dotnet test --logger:trx
+
 FROM base AS runtime
 
 WORKDIR /app

@@ -1,8 +1,6 @@
 using System;
 using System.IO;
-using System.Diagnostics;
 using Xunit;
-//using Xunit.Abstractions;
 
 namespace importerTests
 {
@@ -11,18 +9,26 @@ namespace importerTests
         [Fact]
         public void NoSourceDirectory()
         {
-            Assert.True(true);
-            Debug.WriteLine("Test");
-            /*
-            using (var sw = new StringWriter())
-            {
-                Console.SetOut(sw);
-                importer.Program.Main();
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
 
-                var result = sw.ToString().Trim();
-                Assert.Equal("Can't find source directory.", result);
-            }
-            */
+            var app = new importer.Importer();
+            app.Run();
+
+            Assert.Contains("Can't find source directory.", sw.ToString());
+        }
+        [Fact]
+        public void NoDestinationDirectory()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+
+            Environment.SetEnvironmentVariable("SRC", "../../../Resources/in");
+
+            var app = new importer.Importer();
+            app.Run();
+
+            Assert.Contains("Can't find destination directory.", sw.ToString());
         }
     }
 }

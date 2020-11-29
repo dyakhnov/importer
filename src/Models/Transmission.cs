@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace importer
+namespace importer.Models
 {
     public class Transmission
     {
